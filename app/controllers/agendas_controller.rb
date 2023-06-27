@@ -21,6 +21,10 @@ class AgendasController < ApplicationController
     end
   end
 
+  def destroy
+    if @agenda.user_id == current_user.id || @agenda.team.owner_id == current_user.id
+  end
+
   private
 
   def set_agenda
