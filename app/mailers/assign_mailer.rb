@@ -7,7 +7,7 @@ class AssignMailer < ApplicationMailer
     mail to: @email, subject: I18n.t('views.messages.complete_registration')
   end
 
-  def agenda_email(email, title)
+  def del_agenda_mail(email, title)
     @email = email
     @title = title
     mail to: @email, subject: 'Agendaが削除されました'
