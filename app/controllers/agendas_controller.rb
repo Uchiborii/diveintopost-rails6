@@ -27,15 +27,14 @@ class AgendasController < ApplicationController
 
     if agenda.user_id == current_user.id || agenda.team.owner_id == current_user.id
       agenda.destroy
-      members.each do | member |
-      AssignMailer.del_agenda_mail(member.email, agenda.title).deliver_now
+      members.each do |member|
+        AssignMailer.del_agenda_mail(member.email, agenda.title).deliver_now
       end
       redirect_to dashboard_url, notice: 'アジェンダを削除しました。'
     else
       redirect_to dashboard_url, notice: 'アジェンダの作成者かチームリーダーのみ削除可能です'
     end
   end
-
 
   private
 
